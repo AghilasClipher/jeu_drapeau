@@ -1,0 +1,35 @@
+#formulaire_insc_div{
+    margin-top: 20px;
+    margin-left: 450px;
+    margin-right: 450px;
+}
+
+#titre_inscription{
+    margin-top: 50px;
+    color: royalblue;
+}
+
+#btn_sinscrire{
+    margin-left: 200px;
+}
+
+#title_insc{
+    font-size: 40px;
+}
+
+#titre_pg_insc{
+    text-align: center;
+    color: blue;
+}
+
+.msg_erreur{
+    color: red;
+}
+
+.msg_success{
+    color: green;
+}
+
+#btn_revenir_accueil{
+    margin-left: 100px;
+}

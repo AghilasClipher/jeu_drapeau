@@ -1,0 +1,72 @@
+#formulaire_co{
+    margin-top: 18px;
+}
+#titre_afrique{
+    color: green;
+    text-align: center;
+}
+.dropdown-item{
+    color: blue;
+}
+#titre_et_connexion{
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+#navbar_continents_profil{
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+#inscrire_mdp_oubli{
+    font-size: smaller;
+    text-align: right;
+    margin-bottom: 0px;
+}
+
+#msg_bienvenue{
+    color: blue;
+    margin-top: 25px;
+    margin-right: 25px;
+    font-size: 20px;
+}
+
+#map{
+    width: 750px;
+    height: 500px;
+    margin-left: 30px;
+    margin-top: 30px;
+    margin-right: 50px;
+    margin-bottom: 100px;
+}
+
+#box_carte_jeu{
+    margin-left: 30px;
+    margin-top: 0px;
+    width: 95.55%;
+    height: 600px;
+    /*background-color: wheat;*/
+    padding-right: 0px;
+}
+#box_jeu{
+    height: 350px;
+    width: 400px;
+    margin-top: 100px;
+    margin-left: 10px;
+    margin-right: 0px;
+    background-color: lightskyblue;
+    box-shadow: 0px 0px 10px 2px;
+    
+}
+
+.jouer-btn,.suivant-btn{
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 10px 20px;
+}
+
+.controls{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
