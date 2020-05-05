@@ -37,7 +37,7 @@
         <h1 class="display-4 titres" id="titre_afrique"> Afrique</h1>
       </div>
       <!-- Si l'utilisateur est connecté, on affiche un message de bienvenue, sinon, on affiche le formulaire de connexion (pseudo et mdp) -->
-      <?php include_once 'templates/bienvenue_or_formulaire_co.php'; ?>
+      <?php include_once 'templates/bienvenue_or_formulaire_co.phpp'; ?>
     </div>
       <!-- Si l'utilisateur est connecté, on affiche la navbar correspondante -->
       <?php if(is_logged()): ?>
