@@ -26,7 +26,7 @@
       include_once 'inscriptionphp.php';
     ?>
     
-    <h1 class="display-4" id="titre_pg_insc"> Jeu des drapeaux </h1>
+    <h1 class="display-4" id="titre_pg_insc"> FlagEducation </h1>
     <div id="titre_inscription">
       <h3 class="text-center" id="title_insc"> Inscription</h3>
     </div>
@@ -36,7 +36,15 @@
         <div class="form-group row">
           <label for="inputPseudo3" class="col-sm-2 col-form-label">Pseudo</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" name="pseudo_reg" id="inputPseudo3" placeholder="Votre pseudo">
+          <?php
+              if(isset($_GET["pseudo"])){
+                $pseudo=$_GET["pseudo"];
+                echo '<input type="text" class="form-control" name="pseudo_reg" id="inputPseudo3" placeholder="Votre pseudo" value="'.$pseudo.'">';
+              }
+              else{
+                echo ' <input type="text" class="form-control" name="pseudo_reg" id="inputPseudo3" placeholder="Votre pseudo">';
+              }
+            ?>
           </div>
         </div>
         <div class="form-group row">
@@ -357,6 +365,26 @@
             }); </script>";
             exit(); 
           }
+          elseif($checkSignup=="emailindispo"){
+            echo "<p class='msg_erreur'> Un compte FlagEducation est déjà associé à cette adresse mail. </p>";
+             echo "<script> Swal.fire({
+               title: 'Email indisponible',
+               text: 'Choisissez un autre email',
+               icon: 'error',
+               confirmButtonText: 'OK'
+             }); </script>";
+             exit();
+         }
+         elseif($checkSignup=="mdp_pb"){
+          echo "<p class='msg_erreur'> Votre mot de passe doit contenir entre 8 et 30 caractères. </p>";
+           echo "<script> Swal.fire({
+             title: 'Longueur du mot de passe invalide',
+             text: 'Saisissez un autre mot de passe',
+             icon: 'error',
+             confirmButtonText: 'OK'
+           }); </script>";
+           exit();
+       }
           elseif($checkSignup=="success"){
             
             echo "<script> Swal.fire({
