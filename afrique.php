@@ -30,7 +30,7 @@
        //commentaire php ! 
         include_once 'fct.php';
          init_session();
-         include_once 'templates/connexionphp.php';
+         include_once 'connexionphp.php';
          ?>
     <div class="row" id="titre_et_connexion">
       <div class="col-sm-8">
