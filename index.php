@@ -32,12 +32,12 @@
       </div>
 
       <!-- Si l'utilisateur est connecté, on affiche un message de bienvenue, sinon, on affiche le formulaire de connexion (pseudo et mdp) -->
-      <?php include_once 'bienvenue_or_formulaire_co.php'; ?>
+      <?php include_once 'templates/bienvenue_or_formulaire_co.php'; ?>
     </div>
 
     <!-- Cette partie est pour la barre de navigation, afin de choisir sur quel continent on joue et gérer son compte-->
     <?php if(is_logged()): ?>
-      <?php include_once 'navbar_loggedin.php'; ?>
+      <?php include_once 'templates/navbar_loggedin.php'; ?>
     <!-- Etant donné que ici l'utilisateur n'est pas connecté, on désactive les boutons pour les autres continents -->
     <?php else: ?>
       <nav class="navbar bg-dark navbar-dark navbar-expand-sm" id="navbar_continents_profil"> 
