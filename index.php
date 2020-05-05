@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Jeu des drapeaux: apprendre en s'amusant</title>
+    <title>FlagEducation: apprendre en s'amusant</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -28,7 +28,7 @@
       ?>
     <div class="row" id="titre_et_connexion">
       <div class="col-sm-8">
-        <h1 class="display-4" id="titre_accueil"> Jeu des drapeaux</h1>
+        <h1 class="display-4" id="titre_accueil"> FlagEducation </h1>
       </div>
 
       <!-- Si l'utilisateur est connecté, on affiche un message de bienvenue, sinon, on affiche le formulaire de connexion (pseudo et mdp) -->
