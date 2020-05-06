@@ -14,8 +14,19 @@
       $email=$_POST["email"];
       // On verifie si les inputs pour l'inscription sont vides
       if(empty($pseudo) || empty($password) || strcmp("Choisir votre pays",$pays)==0 || empty($email)){
-        header("Location:inscription.php?inscription=empty");
-        exit();
+        if(!empty($pseudo) && (!empty($email))){
+          header("Location:inscription.php?inscription=empty&email=$email&pseudo=$pseudo");
+          exit();
+        }
+        elseif(!empty($pseudo)){
+          header("Location:inscription.php?inscription=emptyl&pseudo=$pseudo");
+          exit();
+        }
+        else{
+          header("Location:inscription.php?inscription=emptyl&pseudo=$pseudo");
+          exit();
+        }
+      
       }
       elseif(strlen($pseudo)>25){
         header("Location:inscription.php?inscription=pseudolg&email=$email");

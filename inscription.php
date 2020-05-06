@@ -31,6 +31,16 @@
       <h3 class="text-center" id="title_insc"> Inscription</h3>
     </div>
     <a href="index.php" class="btn btn-primary btn-lg active btn-sm" role="button" aria-pressed="true" id=btn_revenir_accueil>Revenir à l'accueil et se connecter</a>
+    <?php 
+      if(isset($_GET["inscription"]) && !empty($_GET["inscription"])){
+        if($_GET["inscription"]=="success"){
+
+          echo ' <div class="d-flex justify-content-center">
+                     <p class="msg_success"> Votre inscription a été enregistrée: allez à <a href="index.php">l&apos;accueil.</a> </p> 
+                     </div>';
+        }
+      }
+       ?>
     <div id="formulaire_insc_div" class="d-flex justify-content-center">
       <form method="post" action="" id="inscription_form">
         <div class="form-group row">
@@ -43,6 +53,13 @@
               }
               else{
                 echo ' <input type="text" class="form-control" name="pseudo_reg" id="inputPseudo3" placeholder="Votre pseudo">';
+                if(isset($_GET["inscription"]) && !empty($_GET["inscription"])){
+                  if($_GET["inscription"]=="pseudoindispo"){
+                    echo '<small> <p class="msg_err_small"> Ce pseudo est indisponible: choisissez-en un autre. </p> </small>';
+                  }elseif($_GET["inscription"]=="pseudolg"){
+                    echo '<small> <p class="msg_err_small"> Votre pseudo ne peut pas contenir plus de 25 caractères. </p> </small>';
+                  }
+                }
               }
             ?>
           </div>
@@ -357,7 +374,6 @@
             }); </script>";
             exit();
           }elseif($checkSignup=="pseudoindispo"){
-            echo "<p class='msg_erreur'> Ce pseudo est indisponible. </p>";
             echo "<script> Swal.fire({
               title: 'Pseudo indisponible',
               text: 'Choisissez un autre pseudo',
@@ -367,7 +383,7 @@
             exit(); 
           }
           elseif($checkSignup=="pseudolg"){
-           echo "<p class='msg_erreur'> Votre pseudo ne peut pas contenir plus de 25 caractères. </p>";
+           
             echo "<script> Swal.fire({
               title: 'Pseudo trop long',
               text: 'Choisissez un autre pseudo',
