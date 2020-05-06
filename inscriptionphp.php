@@ -17,7 +17,7 @@
         header("Location:inscription.php?inscription=empty");
         exit();
       }
-      elseif(strlen($pseudo)>15){
+      elseif(strlen($pseudo)>25){
         header("Location:inscription.php?inscription=pseudolg&email=$email");
         exit();
       }
