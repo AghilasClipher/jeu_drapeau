@@ -31,6 +31,7 @@
 
 .msg_success{
     color: green;
+    font-size: 25px;
 }
 #btn_revenir_accueil{
     margin-left: 100px;
