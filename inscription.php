@@ -31,7 +31,7 @@
       <h3 class="text-center" id="title_insc"> Inscription</h3>
     </div>
     <a href="index.php" class="btn btn-primary btn-lg active btn-sm" role="button" aria-pressed="true" id=btn_revenir_accueil>Revenir à l'accueil et se connecter</a>
-    <div id="formulaire_insc_div">
+    <div id="formulaire_insc_div" class="d-flex justify-content-center">
       <form method="post" action="" id="inscription_form">
         <div class="form-group row">
           <label for="inputPseudo3" class="col-sm-2 col-form-label">Pseudo</label>
@@ -57,16 +57,26 @@
               }
               else{
                 echo ' <input type="email" name="email" class="form-control" id="inputEmail3" placeholder="Votre email">';
+                if(isset($_GET["inscription"]) && !empty($_GET["inscription"])){
+                  if($_GET["inscription"]=="emailindispo"){
+                    echo '<small> <p class="msg_err_small"> Choisissez un autre email. </p> </small>';
+                  }
+                }
               }
             ?>
-            
           </div>
         </div>
-
         <div class="form-group row">
           <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
           <div class="col-sm-10">
             <input type="password" name="password_reg" class="form-control" id="inputPassword3" >
+            <?php
+              if(isset($_GET["inscription"]) && !empty($_GET["inscription"])){
+                if($_GET["inscription"]=="mdp_pb"){
+                echo '<small> <p class="msg_err_small"> Votre mot de passe doit contenir entre 8 et 30 caractères. </p> </small>';
+                }
+              }
+            ?>
           </div>
         </div>
         <div class="form-group row">
@@ -331,6 +341,7 @@
           </div>
         </div>
       </form>
+     </div>
       <?php 
         if(!isset($_GET["inscription"])){
           exit();
@@ -338,9 +349,9 @@
         else{
           $checkSignup=$_GET["inscription"];
           if( $checkSignup=="empty"){
-            echo "<p class='msg_erreur'> Veuillez remplir tous les champs. </p>";
             echo "<script> Swal.fire({
               title: 'Champs incomplets',
+              text: 'Veuillez remplir tous les champs.',
               icon: 'error',
               confirmButtonText: 'OK'
             }); </script>";
@@ -356,7 +367,7 @@
             exit(); 
           }
           elseif($checkSignup=="pseudolg"){
-           echo "<p class='msg_erreur'> Votre pseudo ne peut pas contenir plus de 15 caractères. </p>";
+           echo "<p class='msg_erreur'> Votre pseudo ne peut pas contenir plus de 25 caractères. </p>";
             echo "<script> Swal.fire({
               title: 'Pseudo trop long',
               text: 'Choisissez un autre pseudo',
@@ -366,17 +377,15 @@
             exit(); 
           }
           elseif($checkSignup=="emailindispo"){
-            echo "<p class='msg_erreur'> Un compte FlagEducation est déjà associé à cette adresse mail. </p>";
              echo "<script> Swal.fire({
                title: 'Email indisponible',
-               text: 'Choisissez un autre email',
+               text: 'Un compte FlagEducation est associé à cette adresse email',
                icon: 'error',
                confirmButtonText: 'OK'
              }); </script>";
              exit();
          }
          elseif($checkSignup=="mdp_pb"){
-          echo "<p class='msg_erreur'> Votre mot de passe doit contenir entre 8 et 30 caractères. </p>";
            echo "<script> Swal.fire({
              title: 'Longueur du mot de passe invalide',
              text: 'Saisissez un autre mot de passe',
@@ -384,9 +393,8 @@
              confirmButtonText: 'OK'
            }); </script>";
            exit();
-       }
+          }
           elseif($checkSignup=="success"){
-            
             echo "<script> Swal.fire({
               title: 'Inscription réussie',
               text: 'Bienvenue au site !',
@@ -395,25 +403,7 @@
             }); </script>";
             exit(); 
           }
-
         }
-
-      
-      ?>
-  
-    
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+      ?>    
   </body>
 </html>
