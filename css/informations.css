@@ -1,0 +1,13 @@
+#bloc_profil{
+    height: 500px;
+    margin-left: 300px;
+    margin-right: 300px;
+    margin-top: 200px;
+}
+
+#sous_bloc{
+    margin-left: 150px;
+    padding: 25px 50px;
+    background-color: floralwhite;
+    width: 500px;
+}
