@@ -34,7 +34,6 @@
     <?php 
       if(isset($_GET["inscription"]) && !empty($_GET["inscription"])){
         if($_GET["inscription"]=="success"){
-
           echo ' <div class="d-flex justify-content-center">
                      <p class="msg_success"> Votre inscription a été enregistrée: allez à <a href="index.php">l&apos;accueil.</a> </p> 
                      </div>';
