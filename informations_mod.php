@@ -52,24 +52,25 @@
             <table class="table table-dark ">
               <tr>
                 <td>Pseudo</td>
-                <td><?= htmlspecialchars($_SESSION["username"]) ?></td>
+                <td><input name="pseudo" class="form-control" type="text" value="<?= htmlspecialchars($_SESSION["username"]) ?>"></td>
               </tr>
               <tr>
                 <td>Email</td>
-                <td><?= htmlspecialchars($_SESSION["email"]) ?></td>
+                <td><input name="email" class="form-control" type="text" value="<?= htmlspecialchars($_SESSION["email"]) ?>"></td>
               </tr>
               <tr>
                 <td>Pays</td>
-                <td><?= htmlspecialchars($_SESSION["pays"]) ?></td>
+                <td><input readonly class="form-control" type="text" value="<?= htmlspecialchars($_SESSION["pays"]) ?>"></td>
               </tr>
               <tr>
                 <td> Date d'inscription</td>
-                <td><?= htmlspecialchars($_SESSION["date_inscription"]) ?> </td>
+                <td><input readonly class="form-control"  type="text" value="<?= htmlspecialchars($_SESSION["date_inscription"]) ?> "></td>
               </tr>
             </table>
-            <div class="d-flex justify-content-center">
-             <a href="informations_mod.php" class="btn btn-info" role="button">Link Button</a>
-            </div>
+            <div  class="d-flex justify-content-center">
+                <a href="informations_mod" class="btn btn-info" role="button">Link Button</a>
+        <button class="btn btn-warning" name="modifier">Modifier</button>
+        </div>
           </div>
 
           <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
