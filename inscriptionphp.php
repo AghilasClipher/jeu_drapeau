@@ -60,7 +60,7 @@
       }
       // à partir d'ici, c'est bon !
       $passwordHash = password_hash($password, PASSWORD_BCRYPT);
-      $sql = "INSERT INTO utilisateurs (Pseudo,Email,Pays,Date_inscription,User_admin,Password) VALUES (:pseudo,:email, :pays,NULL,0,:password)";
+      $sql = "INSERT INTO utilisateurs (Pseudo,Email,Pays,Date_inscription,Nb_parties,User_admin,Password) VALUES (:pseudo,:email, :pays,NULL,0,0,:password)";
       $stmt = $conn->prepare($sql);
 
       $stmt->bindValue(':pseudo', $pseudo);
