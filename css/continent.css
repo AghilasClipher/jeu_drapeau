@@ -38,6 +38,10 @@
     margin-top: 30px;
     margin-right: 50px;
     margin-bottom: 100px;
+    
+}
+.invisible{
+    display:none;
 }
 
 #box_carte_jeu{
@@ -45,8 +49,8 @@
     margin-top: 0px;
     width: 95.55%;
     height: 600px;
-    /*background-color: wheat;*/
     padding-right: 0px;
+    
 }
 #box_jeu{
     height: 350px;
@@ -59,14 +63,26 @@
     
 }
 
-.jouer-btn,.suivant-btn{
-    font-size: 1.5rem;
-    font-weight: bold;
-    padding: 10px 20px;
+#choisir_niveau{
+    margin-top: 20px;
+    font-size: 25px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.les_niveaux1{
+    margin-top: 10px;
+    height: 50px;
+    width: 250px;
+    font-size: x-large;
+    
 }
 
-.controls{
-    display: flex;
-    justify-content: right;
-    align-items: center;
+.les_niveaux23{
+    margin-top: 25px;
+    height: 50px;
+    width: 250px;
+    font-size: x-large;
+}
+
+#btn_commencer{
+    margin-top: 150px;
 }

@@ -16,7 +16,7 @@
     <!-- Feuille de style CSS-->
     <link rel="stylesheet" href=css/continent.css>
     <!-- Le script pour l'affichage des questions drapeaux -->
-    <script defer src="js/afrique_jeu.js"> </script>
+   
   </head>
   <body>
       
@@ -53,18 +53,30 @@
             </ul>
          </nav>
       <?php endif; ?>
-      <div class="container-fluid" id="box_carte_jeu">
-        <div class="row">
-          <div class="coll-sm" id="map"></div>
-          <div class="coll-sm" id="box_jeu">
-              <div class=row id="rang_btn">
-                <div class="controls">
-                  <button type="button" class="btn btn-primary btn-lg jouer-btn">Jouer</button>
-                  <button type="button" class="btn btn-primary btn-lg suivant-btn">Suivant</button>          
-                </div>
+      <div class="d-flex justify-content-center" id="box_carte_jeu">
+          <div  id="map" class="invisible"> </div> 
+          <div class="justify-content-center" id="box_jeu">
+              <div class="text-center">
+              <button type="button" id="btn_commencer"  class="btn btn-success invisible les_niveaux1" onclick="commencerJeu()">Commencer</button>
               </div>
+            <div id="contenu_box">
+              <div id="question_pour_joueur" class="text-center">
+                  <p id="choisir_niveau"> Choisir votre niveau </p>
+                
+              </div>
+              <div id="option_niveau">
+                <div class="text-center">
+                  <button type="button" class="btn btn-warning  les_niveaux1" onclick="definirNiveau('facile')">Facile</button>
+                </div>
+                <div class="text-center">
+                  <button type="button" class="btn btn-warning les_niveaux23" onclick="definirNiveau('moyen')">Moyen</button>
+                </div>
+                <div class="text-center">
+                  <button type="button" class="btn btn-warning les_niveaux23" onclick="definirNiveau('difficile')" >Difficile</button>
+                </div>
+              <div>
+            </div>
           </div>
-        </div>
       </div>
       
       <script src="js/afrique_carte.js"> </script>
