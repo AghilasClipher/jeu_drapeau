@@ -59,14 +59,24 @@
               <div class="text-center">
               <button type="button" id="btn_commencer"  class="btn btn-info invisible les_niveaux1" onclick="commencerJeu()">Commencer</button>
               </div>
+            <div class="container invisible" id="questions_score_count">
+              <div class="row text-center" id="la_question_et_le_score">
+                <div class="col-sm">
+                  <p class= "score_qst" id="qst_cnt"> Question: <span id="num_qst"> 1</span>/5 </p>
+                </div>
+                <div class="col-sm">
+                  <p class="score_qst" id="score_cnt"> Score: <span id="score_num">0</span> </p>
+                </div>
+              </div>
+            </div>
             <div id="contenu_box">
+            
               <div id="question_pour_joueur" class="text-center">
                   <p id="choisir_niveau"> Choisir votre niveau </p>
-                
               </div>
               <div id="option_niveau">
                 <div class="text-center">
-                  <button type="button" class="btn btn-warning  les_niveaux1" onclick="definirNiveau('facile')">Facile</button>
+                  <button type="button" class="btn btn-warning les_niveaux1" onclick="definirNiveau('facile')">Facile</button>
                 </div>
                 <div class="text-center">
                   <button type="button" class="btn btn-warning les_niveaux23" onclick="definirNiveau('moyen')">Moyen</button>

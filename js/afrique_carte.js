@@ -13,8 +13,9 @@ function definirNiveau(le_niveau_choisi){
 }
 function commencerJeu(niveau){
 	//On change la couleur du background
-	
-	document.getElementById("box_jeu").style.backgroundColor="white";
+	document.getElementById("btn_commencer").classList.add('invisible');
+	document.getElementById("box_jeu").style.backgroundColor="#1E90FF";
+	document.getElementById("questions_score_count").classList.remove('invisible');
 	// bornes pour empecher la carte de "dériver" trop loin...
 	var northWest = L.latLng(42.841047, -31.676134);
 	var southEast = L.latLng(-42.158951, 77.495741);
