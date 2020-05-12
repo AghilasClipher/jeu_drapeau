@@ -57,7 +57,7 @@
           <div  id="map" class="invisible"> </div> 
           <div class="justify-content-center" id="box_jeu">
               <div class="text-center">
-              <button type="button" id="btn_commencer"  class="btn btn-info invisible les_niveaux1" onclick="commencerJeu()">Commencer</button>
+              <button type="button" id="btn_commencer"  class="btn btn-dark invisible les_niveaux1" onclick="commencerJeu()">Commencer</button>
               </div>
             <div class="container invisible" id="questions_score_count">
               <div class="row text-center" id="la_question_et_le_score">
