@@ -9,8 +9,12 @@ function definirNiveau(le_niveau_choisi){
 	niveau=le_niveau_choisi;
 	document.getElementById("contenu_box").classList.add('invisible');
 	document.getElementById("btn_commencer").classList.remove('invisible');
+	
 }
 function commencerJeu(niveau){
+	//On change la couleur du background
+	
+	document.getElementById("box_jeu").style.backgroundColor="white";
 	// bornes pour empecher la carte de "dériver" trop loin...
 	var northWest = L.latLng(42.841047, -31.676134);
 	var southEast = L.latLng(-42.158951, 77.495741);
@@ -41,9 +45,9 @@ function commencerJeu(niveau){
 		maxZoom: 18,
 		ext: 'png'
 	});
-	if(niveau=='facile'){
+	console.log(this.niveau);
+	if(this.niveau=='facile'){
 		map.addLayer(Stamen_TerrainBackground);
-		console.log("iLe niveau est facile");
 	}else{
 		map.addLayer(Esri_WorldImagery);
 		console.log("ici");
