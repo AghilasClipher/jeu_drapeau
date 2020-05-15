@@ -68,6 +68,11 @@
                   <p class="score_qst" id="score_cnt"> Score: <span id="score_num">0</span> </p>
                 </div>
               </div>
+              <div class="row text-center" id="phrase_question">
+                <div class="col-sm">
+                  <p class="text-center"> Où se trouve <span id="sous_chaine_phrase_qst"> </span> </p>
+                </div>
+              </div>
             </div>
             <div id="contenu_box">
             
