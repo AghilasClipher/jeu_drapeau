@@ -73,6 +73,12 @@
                   <p class="text-center"> Où se trouve <span id="sous_chaine_phrase_qst"> </span> </p>
                 </div>
               </div>
+              <div class="row text-center" id="img_pays">
+                <div class="col-sm">
+                  <!-- height 125 et w 250 -->
+                  <img src="images/continent_afrique/continent.jpg" id="img_drapeau"width="250" height="150" alt="Image du drapeau du pays">
+                </div>
+              </div>
             </div>
             <div id="contenu_box">
             

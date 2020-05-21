@@ -6,14 +6,21 @@
 
 //varaible globale pour le niveau
 var niveau;
+//variable pour manipuler la carte 
 var map;
+/*Cette variable sert à afficher : ou se trouve ce pays ? (niveau moyen et diff) ou : Ou se trouve la Tunisie par exemple (niveau facile)*/ 
 var sous_chaine_qst=document.getElementById("sous_chaine_phrase_qst");
+/*var pour afficher l'image du drapeau du pays */ 
+var img=document.getElementById("img_drapeau");
+
 function afficher_Polygone_juste(le_pays){
-	$.post('ajax/recuperer_pays_geoJson.php',{pays:le_pays},function(data){
+	$.post('ajax/recuperer_pays_geoJson.php',{pays_json:le_pays},function(data){
+		console.log(data);
 		afficher_Polygone2(data,le_pays);
 	});
 }
 function afficher_Polygone2(geoJsonObjUnparsed,pays){
+	
 	var parsedData=JSON.parse(geoJsonObjUnparsed);
 	console.log("iciiii");
 	console.log(parsedData);
@@ -38,6 +45,14 @@ function afficher_Question(pays){
 	}else{
 		sous_chaine_qst.textContent="ce pays ?";
 	}
+	$.post('ajax/recuperer_pays_geoJson.php',{pays_url_img:pays},function(data){
+		console.log(data);
+		afficher_Image(data);
+
+	});
+}
+function afficher_Image(url_img){
+	img.src=url_img;
 }
 function commencerJeu(niveau){
 	//On change la couleur du background
@@ -80,10 +95,13 @@ function commencerJeu(niveau){
 	}else{
 		map.addLayer(Esri_WorldImagery);
 	}
-	
-	//essai de polygone:
-	var pays1='Egypte';
+
+	/* traitement à faire : on récupère les 5 pays du questionnaire 
+	puis on fais le traitement: on affiche la question (avec le drapeau) puis ensuite 
+	on fais la verification .. puis on affiche la reponse avec polygone vert ou polygone rouge */
+ 	var pays1='Egypte';
 	afficher_Question(pays1);
+	
 	afficher_Polygone_juste(pays1);
 	
 }
