@@ -59,6 +59,7 @@
               <div class="text-center">
               <button type="button" id="btn_commencer"  class="btn btn-dark invisible les_niveaux1" onclick="commencerJeu()">Commencer</button>
               </div>
+            <!-- Cette div est utilisée pour afficher la question et l'image du drapeau -->
             <div class="container invisible" id="questions_score_count">
               <div class="row text-center" id="la_question_et_le_score">
                 <div class="col-sm">
@@ -77,6 +78,11 @@
                 <div class="col-sm">
                   <!-- height 125 et w 250 -->
                   <img src="images/continent_afrique/continent.jpg" id="img_drapeau"width="250" height="150" alt="Image du drapeau du pays">
+                </div>
+              </div>
+              <div class="row text-center">
+                <div class="col-sm">
+                  <button type="button" class="btn btn-info" onclick="enlever_Polygone()">Enlever le polygone</button>
                 </div>
               </div>
             </div>
