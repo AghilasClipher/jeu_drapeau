@@ -9,25 +9,30 @@ var niveau;
 //variable pour manipuler la carte 
 var map;
 //variable pour les pays du questionnaire(tableau)
-var pays_questions=["Algérie","Namibie","Madagascar","Egypte","Mali"];
+var pays_questions=["Algérie","Mali","Madagascar","Namibie","Egypte"];
+//Variable contenenant le nombre de questions
+var nb_qst=5;
 //Variable pour le polygone affiché
 var polygone;
+var pays_actuel;
+var num_pays_actuel=0;
+var num_qst=1;
+var btn_suivant=document.getElementById("btn_suivant");
 /*Cette variable sert à afficher : ou se trouve ce pays ? (niveau moyen et diff) ou : Ou se trouve la Tunisie par exemple (niveau facile)*/ 
 var sous_chaine_qst=document.getElementById("sous_chaine_phrase_qst");
+/*Variable pour le num de la question*/ 
+var num_qst_elt=document.getElementById("num_qst");
 /*var pour afficher l'image du drapeau du pays */ 
 var img=document.getElementById("img_drapeau");
 
 function afficher_Polygone_juste(le_pays){
 	$.post('ajax/recuperer_pays_geoJson.php',{pays_json:le_pays},function(data){
-		console.log(data);
-		afficher_Polygone2(data,le_pays);
+		afficher_Polygone2_juste(data,le_pays);
 	});
 }
-function afficher_Polygone2(geoJsonObjUnparsed,pays){
+function afficher_Polygone2_juste(geoJsonObjUnparsed,pays){
 	
 	var parsedData=JSON.parse(geoJsonObjUnparsed);
-	console.log("iciiii");
-	console.log(parsedData);
 	var polygone_bonne_reponse={
 			color: 'green'
 		   };
@@ -53,6 +58,7 @@ function afficher_Question(pays){
 	}else{
 		sous_chaine_qst.textContent="ce pays ?";
 	}
+	num_qst_elt.innerHTML=num_qst;
 	$.post('ajax/recuperer_pays_geoJson.php',{pays_url_img:pays},function(data){
 		afficher_Image(data);
 	});
@@ -60,15 +66,21 @@ function afficher_Question(pays){
 function afficher_Image(url_img){
 	img.src=url_img;
 }
-// Fonction principale du jeu: 
-function jouer(){
-	var length_qst=pays_questions.length;
-	var i;
-	var pays_actuel;
-	for(i=0;i<1;i++){
-		pays_actuel=pays_questions[i];
-		afficher_Question(pays_actuel);
-		afficher_Polygone_juste(pays_actuel);
+// Fonction principale du jeu:
+//Fonction pour récuperer les pays du questionnaire: les mets dans un array 
+
+function lancer_Questions(){
+	afficher_Question(pays_questions[num_pays_actuel]);
+	//afficher_Polygone_juste(pays_questions[num_pays_actuel]);
+}
+function pays_suivant(){
+	num_pays_actuel++;
+	num_qst++;
+	//enlever_Polygone();
+	lancer_Questions();
+	if(num_qst==5){
+		btn_suivant.classList.add("invisible");
+		return;
 	}
 }
 function commencerJeu(niveau){
@@ -88,7 +100,7 @@ function commencerJeu(niveau){
 		minZoom: 2,
 		maxZoom: 7,
 		zoom: 3,
-		maxBounds: bornes,
+		//maxBounds: bornes,
 		maxBoundsViscosity: 1.0
 	});
 	//La layer affichée dépends du niveau choisi 
@@ -111,13 +123,40 @@ function commencerJeu(niveau){
 		});
 		map.addLayer(Esri_WorldImagery);
 	}
-	jouer();
+	document.getElementById('map').style.cursor = 'crosshair';
+	var popup=L.popup();
+	function onMapClick(e) {
+		popup.setLatLng(e.latlng)
+		.setContent("Hello click détecté sur la carte !<br/> " + e.latlng.toString())
+		.openOn(map);
+	}
+	// Association Evenement/Fonction handler
+	map.on('click', onMapClick);
+	//jouer();
+	//recuperer_Pays("Afrique");
+	lancer_Questions();
 	/* traitement à faire : on récupère les 5 pays du questionnaire 
 	puis on fais le traitement: on affiche la question (avec le drapeau) puis ensuite 
 	on fais la verification .. puis on affiche la reponse avec polygone vert ou polygone rouge */
-
+	
  	
 	
 }
 
 
+/*function recuperer_Pays(continent){
+	$.post('ajax/recuperer_pays_geoJson.php',{pays_questionnaire:continent},function(data){
+		jouer(data);
+	});
+}
+//Fonction utilisée par recuperer_Pays
+function jouer(lespays){
+	//console.log(lespays);
+	this.pays_questions=lespays.split('/');
+	var length_qst=pays_questions.length;
+	afficher_Question(pays_questions[num_pays_actuel]);
+	afficher_Polygone_juste(pays_questions[0]);
+	afficher_Polygone_juste(pays_questions[1]);
+	enlever_Polygone();
+	//pays_questions[indice]=lepays;
+}*/
