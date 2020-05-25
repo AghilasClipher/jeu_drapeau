@@ -28,7 +28,7 @@
       ?>
     <div class="row" id="titre_et_connexion">
       <div class="col-sm-8">
-        <h1 class="display-4" id="titre_accueil"> FlagEducation </h1>
+        <h1 class="display-4" id="titre_accueil"> GeoEducation </h1>
       </div>
 
       <!-- Si l'utilisateur est connecté, on affiche un message de bienvenue, sinon, on affiche le formulaire de connexion (pseudo et mdp) -->

@@ -7,16 +7,16 @@
           <a href="afrique.php" class="nav-link"> Afrique</a>
         </li>
         <li class="nav-item"> 
-          <a href="europe.html" class="nav-link"> Europe</a>
+          <a href="europe.php" class="nav-link"> Europe</a>
         </li>
         <li class="nav-item "> 
-          <a href="amerique.html" class="nav-link"> Amérique</a>
+          <a href="amerique.php" class="nav-link"> Amérique</a>
         </li>
         <li class="nav-item"> 
-          <a href="asie.html" class="nav-link"> Asie</a>
+          <a href="asie.php" class="nav-link"> Asie</a>
         </li>
         <li class="nav-item"> 
-          <a href="oceanie.html" class="nav-link"> Océanie</a>
+          <a href="oceanie.php" class="nav-link"> Océanie</a>
         </li>
       </ul>
       <!-- Le dropdown pour 'Mon compte'-->

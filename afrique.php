@@ -17,7 +17,7 @@
     <!-- Le script pour l'affichage des questions drapeaux -->
    
   </head>
-  <body>
+  <body id="body_afrique">
       
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

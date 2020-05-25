@@ -8,8 +8,17 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+     <!-- Script utilisé pour le sweet alert -->
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <!-- Les fichiers css puis js concernant la carte avec Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+    <!-- Feuille de style CSS-->
+    <link rel="stylesheet" href=css/continent.css>
+    <!-- Le script pour l'affichage des questions drapeaux -->
+  
   </head>
-  <body>
+  <body id="body_oceanie">
       
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -28,7 +37,7 @@
          ?>
     <div class="row" id="titre_et_connexion">
       <div class="col-sm-8">
-        <h1 class="display-4 titres" id="titre_afrique"> Afrique</h1>
+        <h1 class="display-4 titres" id="titre_oceanie"> Océanie</h1>
       </div>
       <!-- Si l'utilisateur est connecté, on affiche un message de bienvenue, sinon, on affiche le formulaire de connexion (pseudo et mdp) -->
       <?php include_once 'templates/bienvenue_or_formulaire_co.php'; ?>
