@@ -26,7 +26,7 @@
       include_once 'inscriptionphp.php';
     ?>
     
-    <h1 class="display-4" id="titre_pg_insc"> FlagEducation </h1>
+    <h1 class="display-4" id="titre_pg_insc"> GeoEducation </h1>
     <div id="titre_inscription">
       <h3 class="text-center" id="title_insc"> Inscription</h3>
     </div>

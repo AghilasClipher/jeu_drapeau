@@ -20,17 +20,25 @@
         $stmt->execute();
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         echo $row["Url_image"];
-    }elseif(isset($_POST['pays_questionnaire'])){
-        $continent=$_POST['pays_questionnaire'];
+    }elseif(isset($_POST['continent_questionnaire'])){
+        $continent=$_POST['continent_questionnaire'];
         $conn=connect_to_db();
-        $sql = "SELECT Pays1,Pays2 FROM questionnaires WHERE Continent = :le_continent";
+        $num=rand(1,2);
+        $sql = "SELECT Pays1,Pays2,Pays3,Pays4,Pays5 FROM questionnaires WHERE Continent = :le_continent and Num= :le_num";
         $stmt = $conn->prepare($sql);
         $stmt->bindValue(':le_continent', $continent);
+        $stmt->bindValue(':le_num', $num);
         $stmt->execute();
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         echo $row["Pays1"];
         echo "/";
         echo $row["Pays2"];
+        echo "/";
+        echo $row["Pays3"];
+        echo "/";
+        echo $row["Pays4"];
+        echo "/";
+        echo $row["Pays5"];
        
     }
 ?>

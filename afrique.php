@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>FlagEducation -Afrique: drapeaux</title>
+    <title>GeoEducation - Afrique: drapeaux</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -12,6 +12,9 @@
     <!-- Les fichiers css puis js concernant la carte avec Leaflet -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"/>
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+    <!-- Script pour determiner si un point is inside un polygone-->
+    <script src="https://cdn.rawgit.com/hayeswise/Leaflet.PointInPolygon/v1.0.0/wise-leaflet-pip.js"></script>
+    <script src="https://rawgit.com/hayeswise/Leaflet.PointInPolygon/master/wise-leaflet-pip.js"></script>
     <!-- Feuille de style CSS-->
     <link rel="stylesheet" href=css/continent.css>
     <!-- Le script pour l'affichage des questions drapeaux -->
@@ -33,7 +36,7 @@
          ?>
     <div class="row" id="titre_et_connexion">
       <div class="col-sm-8">
-        <h1 class="display-4 titres" id="titre_afrique"> Afrique</h1>
+        <h1 class="display-4 titres titre_afrique" id="titre_continent">Afrique</h1>
       </div>
       <!-- Si l'utilisateur est connecté, on affiche un message de bienvenue, sinon, on affiche le formulaire de connexion (pseudo et mdp) -->
       <?php include_once 'templates/bienvenue_or_formulaire_co.php'; ?>

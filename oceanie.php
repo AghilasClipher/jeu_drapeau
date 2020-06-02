@@ -37,7 +37,7 @@
          ?>
     <div class="row" id="titre_et_connexion">
       <div class="col-sm-8">
-        <h1 class="display-4 titres" id="titre_oceanie"> Océanie</h1>
+        <h1 class="display-4 titres titre_oceanie" id="titre_continent">Océanie</h1>
       </div>
       <!-- Si l'utilisateur est connecté, on affiche un message de bienvenue, sinon, on affiche le formulaire de connexion (pseudo et mdp) -->
       <?php include_once 'templates/bienvenue_or_formulaire_co.php'; ?>

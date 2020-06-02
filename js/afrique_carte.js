@@ -3,15 +3,21 @@
 	difficile: on affiche rien du tout (juste le drapeau à localiser) 
 	facile: carte = Terrain_Background
 	moyen et difficile: carte= Esri_wordl_imagery*/
-
+//variable qui indique on joue dans quel continent:
+$.ajaxSetup({async: false});
+var continent=document.getElementById('titre_continent').innerHTML;
+var continent2=document.getElementById('titre_continent').innerHTML;
+console.log(continent);
 //varaible globale pour le niveau
 var niveau;
 //variable pour manipuler la carte 
 var map;
 //variable pour les pays du questionnaire(tableau)
-var pays_questions=["Algérie","Mali","Madagascar","Namibie","Egypte"];
+var pays_questions=["Algérie","Australie","Madagascar","Namibie","Egypte"];
 //Variable contenenant le nombre de questions
 var nb_qst=5;
+var vartest;
+var varpays;
 //Variable pour le polygone affiché
 var polygone;
 var pays_actuel;
@@ -24,7 +30,28 @@ var sous_chaine_qst=document.getElementById("sous_chaine_phrase_qst");
 var num_qst_elt=document.getElementById("num_qst");
 /*var pour afficher l'image du drapeau du pays */ 
 var img=document.getElementById("img_drapeau");
-
+function onPolygoneClick(e) {
+	var popup = L.popup();
+	popup
+	  .setLatLng(e.latlng)
+	  .setContent("bg sahbi ta clik sur dz")
+	  .openOn(map);
+}
+function verifier_is_inside_polygone(pays){
+	$.post('ajax/recuperer_pays_geoJson.php',{pays_json:pays},function(data){
+		verifier_is_inside_polygone2(data);
+	});
+}
+function verifier_is_inside_polygone2(geoJsonpoly){
+	var parsedData=JSON.parse(geoJsonpoly);
+	var polygone_bonne_reponse={
+		color: 'green'
+	   };
+	polygone=L.geoJSON(parsedData,{ 
+		style: polygone_bonne_reponse
+	}).addTo(map);
+	polygone.on('click',onPolygoneClick);
+}
 function afficher_Polygone_juste(le_pays){
 	$.post('ajax/recuperer_pays_geoJson.php',{pays_json:le_pays},function(data){
 		afficher_Polygone2_juste(data,le_pays);
@@ -44,7 +71,17 @@ function afficher_Polygone2_juste(geoJsonObjUnparsed,pays){
 function enlever_Polygone(){
 	map.removeLayer(polygone);
 }
-
+//Fonction recuperer_questionnaire qui récupère un questionnaire
+function recuperer_questionnaire(continent){
+	//$.ajaxSetup({async: false});
+	$.post('ajax/recuperer_pays_geoJson.php',{continent_questionnaire:continent},function(data){
+		console.log("varpays vaut"+varpays);
+		varpays=data.split("/");
+		console.log(typeof varpays);
+		console.log("varpays vaut"+varpays);
+		console.log("varpays[1]="+varpays[1]+"varpays[2]="+varpays[2]+"varpays[4]="+varpays[4]);
+	});
+}
 //Cette fonction est appelée lorsque l'utilisateur choisit le niveau de jeu
 function definirNiveau(le_niveau_choisi){
 	niveau=le_niveau_choisi;
@@ -59,8 +96,29 @@ function afficher_Question(pays){
 		sous_chaine_qst.textContent="ce pays ?";
 	}
 	num_qst_elt.innerHTML=num_qst;
+	//$.ajaxSetup({async: false});
 	$.post('ajax/recuperer_pays_geoJson.php',{pays_url_img:pays},function(data){
+		//console.log(vartest);
 		afficher_Image(data);
+		vartest=data;
+		//console.log(vartest);
+	});
+}
+function afficher_Question2(pays){
+	if(this.niveau=='facile'){
+		sous_chaine_qst.textContent=": "+pays+" ?";
+	}else{
+		sous_chaine_qst.textContent="ce pays ?";
+	}
+	num_qst_elt.innerHTML=num_qst;
+	$.ajax({'type':"POST",
+			'url':"ajax/recuperer_pays_geoJson.php",
+			'data':{'pays_url_img':"pays"},
+			'success':function(data){
+				vartest=data;
+				afficher_Image(data);
+			},
+
 	});
 }
 function afficher_Image(url_img){
@@ -95,14 +153,53 @@ function commencerJeu(niveau){
 	// Initialisation de la carte et association avec la div
 	document.getElementById("map").classList.remove('invisible');
 	document.getElementById("contenu_box").classList.add('invisible');
-	map = new L.Map('map', {
-		center: [8.968256, 18.245741],
-		minZoom: 2,
-		maxZoom: 7,
-		zoom: 3,
-		//maxBounds: bornes,
-		maxBoundsViscosity: 1.0
-	});
+	//on crée la carte, et on la centre sur le continent correspondant 
+	if(continent=='Afrique'){
+		map = new L.Map('map', {
+			center: [8.968256, 18.245741],
+			minZoom: 2,
+			maxZoom: 7,
+			zoom: 3,
+			//maxBounds: bornes,
+			maxBoundsViscosity: 1.0
+		});
+	}else if(continent=='Amérique'){
+		map = new L.Map('map', {
+			center: [19.4326296, -99.1331785],
+			minZoom: 2,
+			maxZoom: 7,
+			zoom: 2,
+			//maxBounds: bornes,
+			maxBoundsViscosity: 1.0
+		});
+	}else if(continent=='Asie'){
+		map = new L.Map('map', {
+			center: [37.807909628196015,81.99704000585936],
+			minZoom: 2,
+			maxZoom: 7,
+			zoom: 3,
+			//maxBounds: bornes,
+			maxBoundsViscosity: 1.0
+		});
+	}else if(continent=='Océanie'){
+		map = new L.Map('map', {
+			center: [-24.7761086,134.755],
+			minZoom: 2,
+			maxZoom: 7,
+			zoom: 3,
+			//maxBounds: bornes,
+			maxBoundsViscosity: 1.0
+		});
+	}else if(continent=='Europe'){
+		map = new L.Map('map', {
+			center: [49.49554798943879,16.126002843750005],
+			minZoom: 2,
+			maxZoom: 7,
+			zoom: 3,
+			//maxBounds: bornes,
+			maxBoundsViscosity: 1.0
+		});
+	}
 	//La layer affichée dépends du niveau choisi 
 	if(this.niveau=='facile'){
 		var Stamen_TerrainBackground = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terrain-background/{z}/{x}/{y}{r}.{ext}', {
@@ -125,21 +222,25 @@ function commencerJeu(niveau){
 	}
 	document.getElementById('map').style.cursor = 'crosshair';
 	var popup=L.popup();
+	verifier_is_inside_polygone("Algérie");
 	function onMapClick(e) {
 		popup.setLatLng(e.latlng)
-		.setContent("Hello click détecté sur la carte !<br/> " + e.latlng.toString())
-		.openOn(map);
+				.setContent("Hello click détecté sur la carte !<br/> " + e.latlng.toString())
+				.openOn(map);
 	}
 	// Association Evenement/Fonction handler
-	map.on('click', onMapClick);
+	//map.on('click', onMapClick);
+
+	//polygone.on('click',onPolygoneClick);
 	//jouer();
 	//recuperer_Pays("Afrique");
 	lancer_Questions();
+	
 	/* traitement à faire : on récupère les 5 pays du questionnaire 
 	puis on fais le traitement: on affiche la question (avec le drapeau) puis ensuite 
 	on fais la verification .. puis on affiche la reponse avec polygone vert ou polygone rouge */
-	
- 	
+	recuperer_questionnaire(continent);
+ 	console.log("varpays vaut"+varpays);
 	
 }
 

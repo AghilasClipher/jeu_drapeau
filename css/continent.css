@@ -1,23 +1,23 @@
 #formulaire_co{
     margin-top: 18px;
 }
-#titre_afrique{
+.titre_afrique{
     color: green;
     text-align: center;
 }
-#titre_oceanie{
+.titre_oceanie{
     color: rgb(28, 136, 104);
     text-align: center;
 }
-#titre_amerique{
+.titre_amerique{
     color: rgb(223, 58, 66);
     text-align: center;
 }
-#titre_asie{
+.titre_asie{
     color: rgb(101, 114, 28);
     text-align: center;
 }
-#titre_europe{
+.titre_europe{
     color: rgb(59, 33, 206);
     text-align: center;
 }
