@@ -1,8 +1,24 @@
 #formulaire_co{
     margin-top: 18px;
 }
-#titre_afrique{
+.titre_afrique{
     color: green;
+    text-align: center;
+}
+.titre_oceanie{
+    color: rgb(28, 136, 104);
+    text-align: center;
+}
+.titre_amerique{
+    color: rgb(223, 58, 66);
+    text-align: center;
+}
+.titre_asie{
+    color: rgb(101, 114, 28);
+    text-align: center;
+}
+.titre_europe{
+    color: rgb(59, 33, 206);
     text-align: center;
 }
 .dropdown-item{
@@ -12,8 +28,20 @@
     margin-left: 30px;
     margin-right: 30px;
 }
-body{
+#body_afrique{
     background-color:  #1da11150;;
+}
+#body_asie{
+    background-color:  #d1eb5d50;;
+}
+#body_amerique{
+    background-color:  #5c3d3e50;;
+}
+#body_europe{
+    background-color:  #25d5df50;;
+}
+#body_oceanie{
+    background-color:  #9567d650;;
 }
 #navbar_continents_profil{
     margin-left: 30px;
@@ -98,4 +126,8 @@ body{
 .score_qst{
     font-size: larger;
     font-weight: bolder;
+}
+
+.btn_passer{
+    margin-top: 25px;
 }

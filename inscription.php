@@ -26,7 +26,7 @@
       include_once 'inscriptionphp.php';
     ?>
     
-    <h1 class="display-4" id="titre_pg_insc"> FlagEducation </h1>
+    <h1 class="display-4" id="titre_pg_insc"> GeoEducation </h1>
     <div id="titre_inscription">
       <h3 class="text-center" id="title_insc"> Inscription</h3>
     </div>
@@ -101,7 +101,7 @@
               <label class="input-group-text" for="selection_pays">Votre pays</label>
             </div>
             <select class="custom-select" id="selection_pays" name="selection_pays">
-              <option selected>Choisir votre pays</option>
+              <option selected disabled>Choisir votre pays</option>
               <option value="Afganistan">Afghanistan</option>
                         <option value="Albania">Albania</option>
                         <option value="Algeria">Algeria</option>

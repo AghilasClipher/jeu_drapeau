@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>FlagEducation: apprendre en s'amusant</title>
+    <title>GeoEducation: apprendre en s'amusant</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -28,7 +28,7 @@
       ?>
     <div class="row" id="titre_et_connexion">
       <div class="col-sm-8">
-        <h1 class="display-4" id="titre_accueil"> FlagEducation </h1>
+        <h1 class="display-4" id="titre_accueil"> GeoEducation </h1>
       </div>
 
       <!-- Si l'utilisateur est connecté, on affiche un message de bienvenue, sinon, on affiche le formulaire de connexion (pseudo et mdp) -->
@@ -52,16 +52,16 @@
           <a href="afrique.php" class="nav-link" title="Jouez sans inscription !"> Afrique</a>
         </li>
         <li class="nav-item"> 
-          <a href="europe.html" class="nav-link disabled"> Europe</a>
+          <a href="europe.php" class="nav-link disabled"> Europe</a>
         </li>
         <li class="nav-item "> 
-          <a href="amerique.html" class="nav-link disabled"> Amérique</a>
+          <a href="amerique.php" class="nav-link disabled"> Amérique</a>
         </li>
         <li class="nav-item"> 
-          <a href="asie.html" class="nav-link disabled"> Asie</a>
+          <a href="asie.php" class="nav-link disabled"> Asie</a>
         </li>
         <li class="nav-item"> 
-          <a href="oceanie.html" class="nav-link disabled"> Océanie</a>
+          <a href="oceanie.php" class="nav-link disabled"> Océanie</a>
         </li>
       </ul>     
      </nav>
