@@ -3,33 +3,44 @@
 	difficile: on affiche rien du tout (juste le drapeau à localiser) 
 	facile: carte = Terrain_Background
 	moyen et difficile: carte= Esri_wordl_imagery*/
-//variable qui indique on joue dans quel continent:
+/* On initialise les requetes ajax a etres synchrones afin de pouvoir récuperer les informations*/
 $.ajaxSetup({async: false});
+//variable qui indique on joue dans quel continent:
 var continent=document.getElementById('titre_continent').innerHTML;
-var continent2=document.getElementById('titre_continent').innerHTML;
-console.log(continent);
 //varaible globale pour le niveau
 var niveau;
 //variable pour manipuler la carte 
 var map;
 //variable pour les pays du questionnaire(tableau)
-var pays_questions=["Algérie","Australie","Madagascar","Namibie","Egypte"];
-//Variable contenenant le nombre de questions
+var pays_questions;
+//Variable contenenant le nombre de questions (il y a 5 questions par questionnaire!)
 var nb_qst=5;
 var vartest;
 var varpays;
 //Variable pour le polygone affiché
-var polygone;
+var polygones;
+// Variable qui indique quel est le pays affiché au joueur
 var pays_actuel;
 var num_pays_actuel=0;
 var num_qst=1;
-var btn_suivant=document.getElementById("btn_suivant");
-/*Cette variable sert à afficher : ou se trouve ce pays ? (niveau moyen et diff) ou : Ou se trouve la Tunisie par exemple (niveau facile)*/ 
+var btn_passer=document.getElementById("btn_passer");
+/*Cette variable sert à afficher : ou se trouve ce pays ? (niveau moyen et difficile) ou : Ou se trouve la Tunisie par exemple (niveau facile)*/ 
 var sous_chaine_qst=document.getElementById("sous_chaine_phrase_qst");
-/*Variable pour le num de la question*/ 
+/*Variable pour le numéro de la question*/ 
 var num_qst_elt=document.getElementById("num_qst");
 /*var pour afficher l'image du drapeau du pays */ 
 var img=document.getElementById("img_drapeau");
+
+/* Les fonctions: */ 
+
+//Cette fonction est appelée lorsque l'utilisateur choisit le niveau de jeu
+function definirNiveau(le_niveau_choisi){
+	niveau=le_niveau_choisi;
+	document.getElementById("contenu_box").classList.add('invisible');
+	document.getElementById("btn_commencer").classList.remove('invisible');
+}
+
+
 function onPolygoneClick(e) {
 	var popup = L.popup();
 	popup
@@ -54,8 +65,16 @@ function verifier_is_inside_polygone2(geoJsonpoly){
 }
 function afficher_Polygone_juste(le_pays){
 	$.post('ajax/recuperer_pays_geoJson.php',{pays_json:le_pays},function(data){
-		afficher_Polygone2_juste(data,le_pays);
-	});
+		//afficher_Polygone2_juste(data,le_pays);
+		var parsedData=JSON.parse(data);
+		var polygone_bonne_reponse={
+				color: 'red'
+			};
+		polygone=L.geoJSON(parsedData,{ 
+				style: polygone_bonne_reponse
+			}).bindTooltip(le_pays,{ sticky:true});
+		polygone.addTo(map);
+		});
 }
 function afficher_Polygone2_juste(geoJsonObjUnparsed,pays){
 	
@@ -75,19 +94,13 @@ function enlever_Polygone(){
 function recuperer_questionnaire(continent){
 	//$.ajaxSetup({async: false});
 	$.post('ajax/recuperer_pays_geoJson.php',{continent_questionnaire:continent},function(data){
-		console.log("varpays vaut"+varpays);
-		varpays=data.split("/");
-		console.log(typeof varpays);
-		console.log("varpays vaut"+varpays);
-		console.log("varpays[1]="+varpays[1]+"varpays[2]="+varpays[2]+"varpays[4]="+varpays[4]);
+		console.log("pays_quest vaut"+varpays);
+		pays_questions=data.split("/");
+		console.log(typeof pays_questions);
+		console.log("pays_quest vaut"+pays_questions);
 	});
 }
-//Cette fonction est appelée lorsque l'utilisateur choisit le niveau de jeu
-function definirNiveau(le_niveau_choisi){
-	niveau=le_niveau_choisi;
-	document.getElementById("contenu_box").classList.add('invisible');
-	document.getElementById("btn_commencer").classList.remove('invisible');
-}
+
 // Fonction pour afficher le texte de la question (dépends du niveau)
 function afficher_Question(pays){
 	if(this.niveau=='facile'){
@@ -99,8 +112,8 @@ function afficher_Question(pays){
 	//$.ajaxSetup({async: false});
 	$.post('ajax/recuperer_pays_geoJson.php',{pays_url_img:pays},function(data){
 		//console.log(vartest);
-		afficher_Image(data);
-		vartest=data;
+		img.src=data;
+		
 		//console.log(vartest);
 	});
 }
@@ -131,13 +144,17 @@ function lancer_Questions(){
 	afficher_Question(pays_questions[num_pays_actuel]);
 	//afficher_Polygone_juste(pays_questions[num_pays_actuel]);
 }
+function pays_passer(){
+	afficher_Polygone_faux(pays_questions[num_pays_actuel]);
+}
 function pays_suivant(){
+	pays_passer();
 	num_pays_actuel++;
 	num_qst++;
 	//enlever_Polygone();
 	lancer_Questions();
 	if(num_qst==5){
-		btn_suivant.classList.add("invisible");
+		btn_passer.classList.add("invisible");
 		return;
 	}
 }
@@ -220,44 +237,26 @@ function commencerJeu(niveau){
 		});
 		map.addLayer(Esri_WorldImagery);
 	}
+	//On change la forme du curseur
 	document.getElementById('map').style.cursor = 'crosshair';
 	var popup=L.popup();
-	verifier_is_inside_polygone("Algérie");
 	function onMapClick(e) {
 		popup.setLatLng(e.latlng)
 				.setContent("Hello click détecté sur la carte !<br/> " + e.latlng.toString())
 				.openOn(map);
 	}
 	// Association Evenement/Fonction handler
-	//map.on('click', onMapClick);
+	map.on('click', onMapClick);
 
 	//polygone.on('click',onPolygoneClick);
 	//jouer();
 	//recuperer_Pays("Afrique");
+	recuperer_questionnaire(continent);
 	lancer_Questions();
 	
 	/* traitement à faire : on récupère les 5 pays du questionnaire 
 	puis on fais le traitement: on affiche la question (avec le drapeau) puis ensuite 
 	on fais la verification .. puis on affiche la reponse avec polygone vert ou polygone rouge */
-	recuperer_questionnaire(continent);
- 	console.log("varpays vaut"+varpays);
+ 	console.log("paysquestions dans fin script vaut"+pays_questions);
 	
 }
-
-
-/*function recuperer_Pays(continent){
-	$.post('ajax/recuperer_pays_geoJson.php',{pays_questionnaire:continent},function(data){
-		jouer(data);
-	});
-}
-//Fonction utilisée par recuperer_Pays
-function jouer(lespays){
-	//console.log(lespays);
-	this.pays_questions=lespays.split('/');
-	var length_qst=pays_questions.length;
-	afficher_Question(pays_questions[num_pays_actuel]);
-	afficher_Polygone_juste(pays_questions[0]);
-	afficher_Polygone_juste(pays_questions[1]);
-	enlever_Polygone();
-	//pays_questions[indice]=lepays;
-}*/

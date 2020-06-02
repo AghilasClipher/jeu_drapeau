@@ -85,7 +85,7 @@
               </div>
               <div class="row text-center">
                 <div class="col-sm">
-                  <button type="button" class="btn btn-info" id="btn_suivant"onclick="pays_suivant()">Suivant</button>
+                  <button type="button" class="btn btn-danger btn_passer" id="btn_passer"onclick="pays_suivant()">Passer</button>
                 </div>
               </div>
             </div>
