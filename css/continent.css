@@ -65,7 +65,7 @@
     width: 750px;
     height: 500px;
     margin-left: 30px;
-    margin-top: 30px;
+    margin-top: 10px;
     margin-right: 50px;
     margin-bottom: 100px;
     
@@ -130,4 +130,33 @@
 
 .btn_passer{
     margin-top: 25px;
+}
+
+.leaflet-interactive {
+    cursor: crosshair;
+}
+
+#info_pays{
+    margin-top: 30px;
+}
+
+.les_infos{
+    font-weight: bolder;
+    text-align: center;
+    color: rgb(51, 51, 51);
+}
+
+#indication{
+    margin-top: 20px;
+}
+
+#fin_partie_bloc{
+    margin-top: 100px;
+}
+
+#score_final{
+    margin-bottom: 40px;
+    font-weight: bolder;
+    font-size: x-large;
+    color: rgb(6, 19, 32);
 }

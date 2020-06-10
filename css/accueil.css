@@ -35,3 +35,30 @@
     margin-right: 25px;
     font-size: 20px;
 }
+
+.box_menu_modes{
+    margin-top: 25px;
+}
+
+.photos_continent{
+    height: 200px;
+    width: 183px;
+}
+
+.col_cont{
+    height:225px;
+    width: 200px;
+}
+
+.text_continent{
+    background-color: rgb(24, 157, 190);
+    color: rgb(18, 18, 54);
+    width: 200px;
+    border-radius: 8px;
+    border-style: solid;
+    border-color: blue;
+}
+
+#jouez_gratuit{
+    
+}

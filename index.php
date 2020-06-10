@@ -63,9 +63,61 @@
         <li class="nav-item"> 
           <a href="oceanie.php" class="nav-link disabled"> Océanie</a>
         </li>
+        <li class="nav-item"> 
+          <a href="monde.php" class="nav-link disabled"> Monde</a>
+        </li>
       </ul>     
      </nav>
-    <?php endif; ?> 
+    <?php endif; ?>
+    <div class="container box_menu_modes">
+      <div class="row ">
+        <div class="col">
+          <p id="jouez_gratuit" class="text-center"> Jouez et découvrez les pays gratuitement ! </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="d-flex justify-content-center col col_cont text-center">
+          <a href="afrique.php">
+            <img class="photos_continent" src="images/afrique_continent.png" alt="Jeu-Afrique">
+            <p class="text-center text_continent"> Afrique </p>
+          </a>
+        </div>
+        <div class="d-flex justify-content-center col col_cont text-center">
+          <a href="europe.php">
+            <img class="photos_continent" src="images/europe_continent.png" alt="Jeu-Europe">
+            <p class="text-center text_continent"> Europe </p>
+          </a>
+        </div>
+        <div class="d-flex justify-content-center col col_cont text-center">
+          <a href="asie.php">
+            <img class="photos_continent" src="images/asie_continent.png" alt="Jeu-Asie">
+            <p class="text-center text_continent"> Asie </p>
+          </a>
+        </div>
+      </div>
+      <br>
+        <div class="row">
+          <div class="d-flex justify-content-center col col_cont text-center">
+            <a href="oceanie.php">
+              <img class="photos_continent" src="images/oceanie_continent.jpg" alt="Jeu-Océanie">
+              <p class="text-center text_continent"> Océanie </p>
+            </a>
+          </div>
+          <div class="d-flex justify-content-center col col_cont text-center">
+            <a href="amerique.php">
+              <img class="photos_continent" src="images/amerique_continent.jpg" alt="Jeu-Amérique">
+              <p class="text-center text_continent"> Amérique </p>
+            </a>
+          </div>
+          <div class="d-flex justify-content-center col col_cont text-center">
+            <a href="monde.php">
+              <img class="photos_continent " src="images/monde_continent.jpg" alt="Jeu-Monde">
+              <p class="text-center text_continent"> Monde </p>
+            </a>
+          </div>
+        </div>
+      
+    </div>
     
   </body>
 </html>

@@ -35,7 +35,7 @@
     <?php include_once "templates/navbar_loggedin.php" ?>
     <div id="bloc_profil" class="d-flex justify-content-center">
       <div id="sous_bloc">
-        <h1 id="titre_profil"> Profil</h1>
+        <h1 id="titre_profil"> Mon profil </h1>
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
           <li class="nav-item">
             <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Informations</a>
@@ -44,12 +44,12 @@
           <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Statistiques</a>
           </li>
           <li class="nav-item">
-          <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Historique de jeu</a>
+          <a class="nav-link" id="pills-profile-tab2" data-toggle="pill" href="#pills-profile2" role="tab" aria-controls="pills-profile2" aria-selected="false">Historique de jeu</a>
           </li>
         </ul>
         <div class="tab-content " id="pills-tabContent">
           <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-            <table class="table table-dark ">
+            <table class="table table-hover table-info ">
               <tr>
                 <td>Pseudo</td>
                 <td><?= htmlspecialchars($_SESSION["username"]) ?></td>
@@ -67,22 +67,54 @@
                 <td><?= htmlspecialchars($_SESSION["date_inscription"]) ?> </td>
               </tr>
             </table>
-            <div class="d-flex justify-content-center">
-             <a href="informations_mod.php" class="btn btn-info" role="button">Link Button</a>
-            </div>
           </div>
 
           <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-          <table class="table table-dark">
+          <table class="table table-hover table-info">
               <tr>
                 <td>Parties jouées</td>
                 <td><?= htmlspecialchars($_SESSION["nb_parties"]) ?></td>
               </tr>
               <tr>
                 <td>Score moyen</td>
-                <td> Le score</td>
+                <td> <?= htmlspecialchars($_SESSION["score_moyen"]) ?> / 100 </td>
               </tr>
             </table>
+          </div>
+
+          <div class="tab-pane fade tableFixHead" id="pills-profile2" role="tabpanel" aria-labelledby="pills-profile-tab2">
+          <table class="table table-hover table-info table-fixed">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Continent</th>
+                    <th scope="col">Score</th>
+                    <th scope="col">Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php 
+                    $sql2 = "SELECT Continent,Score,Date_partie  FROM historique WHERE Pseudo = :username";
+                    $pdoResult = $conn->prepare($sql2);
+                    $pdoExec = $pdoResult->execute(array(":username"=>$_SESSION['username']));
+                    if($pdoExec){
+                      if($pdoResult->rowCount()>0){
+                        $num=0;
+                        foreach($pdoResult as $row){
+                          $num=$num+1;
+                          echo '<tr>
+                            <th scope="row">'.$num.'</th>
+                            <td>'.$row["Continent"].'</td>
+                            <td>'.$row["Score"].'</td>
+                            <td>'.$row["Date_partie"].'</td>
+                          </tr>';
+                        }
+                      }
+                    }                  
+                    ?>
+                  
+                </tbody>
+              </table>
           </div>
         </div>
         

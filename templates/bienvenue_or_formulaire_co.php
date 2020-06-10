@@ -3,7 +3,7 @@
 ?>
 <?php if(is_logged()): ?>
          <div class="col-sm-4" id="bienvenue_user">
-           <p id="msg_bienvenue" class="text-right font-italic"> Bienvenue <?= htmlspecialchars($_SESSION['username']) ?> ! </p>
+           <p id="msg_bienvenue" class="text-right font-italic"> Bienvenue <span id="le_pseudo"> <?= htmlspecialchars($_SESSION['username']) ?> </span>! </p>
          </div>
       <?php else: ?>
       <div class="col-sm-4" id="formulaire_co">

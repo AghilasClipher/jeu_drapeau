@@ -56,11 +56,23 @@
             </ul>
          </nav>
       <?php endif; ?>
+      <audio id="audio_erreur" src="sounds/error.mp3" autostart="false" ></audio>
+      <audio id="audio_success" src="sounds/success.mp3" autostart="false" ></audio>
       <div class="d-flex justify-content-center" id="box_carte_jeu">
-          <div  id="map" class="invisible"> </div> 
+          <div  id="map" class="invisible"> </div>
           <div class="justify-content-center" id="box_jeu">
+              <div class="justify-content-center invisible" id="fin_partie_recapitulatif">
+                <div class="text-center" id="fin_partie_bloc">
+                  <p id="score_final"> Score final: <span id="num_score_final"> </span>  /100</p>
+                  <a class="btn btn-success" href="afrique.php" role="button">Rejouer</a>
+                  <a class="btn btn-dark" href="index.php" role="button">Revenir à l'accueil</a>
+                </div>
+              </div>
               <div class="text-center">
               <button type="button" id="btn_commencer"  class="btn btn-dark invisible les_niveaux1" onclick="commencerJeu()">Commencer</button>
+              </div>
+              <div class="text-center">
+                <p class="invisible" id="indication"> Cliquez sur le pays correspondant sur la carte </p>
               </div>
             <!-- Cette div est utilisée pour afficher la question et l'image du drapeau -->
             <div class="container invisible" id="questions_score_count">
@@ -74,19 +86,28 @@
               </div>
               <div class="row text-center" id="phrase_question">
                 <div class="col-sm">
-                  <p class="text-center"> Où se trouve <span id="sous_chaine_phrase_qst"> </span> </p>
+                  <p id="question_ou_se_trouve" class="text-center"> Où se trouve <span id="sous_chaine_phrase_qst"> </span> </p>
                 </div>
               </div>
               <div class="row text-center" id="img_pays">
-                <div class="col-sm">
+                <div class="col-sm" id="bloc_img_pays">
                   <!-- height 125 et w 250 -->
                   <img src="images/continent_afrique/continent.jpg" id="img_drapeau"width="250" height="150" alt="Image du drapeau du pays">
+                  <p class=" invisible les_infos" id="info_pays"><span id="nom_pays_info"> Lepays </span> <br> <br>
+                    Population: <span id="nombre_population_info">  </span> <br> 
+                    Capitale: <span id="pays_capitale_info">  </span> <br>
+                    Superficie: <span id="pays_superficie_info">  </span> <br>
+                    Langue: <span id="pays_langue_info">  </span> <br>
+                  </p>
                 </div>
               </div>
               <div class="row text-center">
                 <div class="col-sm">
-                  <button type="button" class="btn btn-danger btn_passer" id="btn_passer"onclick="pays_suivant()">Passer</button>
+                  <button type="button" class="btn btn-success btn_passer btn-lg invisible" id="btn_finir"onclick="finir()">Finir</button>
+                  <button type="button" class="btn btn-danger btn_passer" id="btn_passer"onclick="pays_passer(0)">Passer</button>
+                  <button type="button" class="btn btn-success btn_passer invisible" id="btn_suivant"onclick="pays_suivant()">Suivant</button>
                 </div>
+                
               </div>
             </div>
             <div id="contenu_box">
@@ -109,7 +130,7 @@
           </div>
       </div>
       
-      <script src="js/afrique_carte.js"> </script>
+      <script src="js/afrique_carte.js" type="text/javascript"> </script>
       
     
 
