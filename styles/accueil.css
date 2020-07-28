@@ -1,0 +1,65 @@
+#titre_accueil{
+    text-align: center;
+    color: blue;
+}
+#formulaire_co{
+    margin-top: 18px;
+}
+#titre_afrique{
+    color: green;
+    text-align: center;
+}
+.dropdown-item{
+    color: blue;
+}
+
+#titre_et_connexion{
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+#navbar_continents_profil{
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+#inscrire_mdp_oubli{
+    font-size: smaller;
+    text-align: right;
+    margin-bottom: 0px;
+}
+
+#msg_bienvenue{
+    color: blue;
+    margin-top: 25px;
+    margin-right: 25px;
+    font-size: 20px;
+}
+
+.box_menu_modes{
+    margin-top: 15px;
+}
+
+.photos_continent{
+    height: 200px;
+    width: 183px;
+}
+
+.col_cont{
+    height:225px;
+    width: 200px;
+}
+
+.text_continent{
+    background-color: rgb(24, 157, 190);
+    color: rgb(18, 18, 54);
+    width: 200px;
+    border-radius: 8px;
+    border-style: solid;
+    border-color: blue;
+}
+
+#jouez_gratuit{
+    font-weight: bolder;
+    color: rgb(17, 69, 228);
+}

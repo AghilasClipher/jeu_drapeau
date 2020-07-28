@@ -2,21 +2,21 @@
   include_once 'informationsphp.php';
 ?>
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
-    <title>Informations de mon profil</title>
+    <title>GeoGamingPro : Informations de mon profil</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <meta name="description" content="Profil du joueur avec ses informations, statistiques de jeu et historique de jeu.">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
     <!-- Feuille de style CSS template-->
-    <link rel="stylesheet" href=css/accueil.css>
+    <link rel="stylesheet" href=styles/accueil.css>
     <!-- Feuille de style CSS-->
-    <link rel="stylesheet" href=css/informations.css>
+    <link rel="stylesheet" href=styles/informations.css>
   </head>
   <body>
       
@@ -33,7 +33,7 @@
       <?php include_once "templates/bienvenue_or_formulaire_co.php"; ?>
     </div>
     <?php include_once "templates/navbar_loggedin.php" ?>
-    <div id="bloc_profil" class="d-flex justify-content-center">
+    <div id="bloc_profil" class="container d-flex justify-content-center">
       <div id="sous_bloc">
         <h1 id="titre_profil"> Mon profil </h1>
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -94,7 +94,7 @@
                 </thead>
                 <tbody>
                   <?php 
-                    $sql2 = "SELECT Continent,Score,Date_partie  FROM historique WHERE Pseudo = :username";
+                    $sql2 = "SELECT Continent,Score,Date_partie  FROM historique WHERE Pseudo = :username ORDER BY Date_partie DESC";
                     $pdoResult = $conn->prepare($sql2);
                     $pdoExec = $pdoResult->execute(array(":username"=>$_SESSION['username']));
                     if($pdoExec){

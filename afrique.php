@@ -1,10 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
-    <title>GeoEducation - Afrique: drapeaux</title>
+    <title>GeoGamingPro - Afrique: drapeaux et pays</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Apprendre les pays de l'Afrique et leurs drapeaux avec une carte géographique.">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
      <!-- Script utilisé pour le sweet alert -->
@@ -16,7 +17,7 @@
     <script src="https://cdn.rawgit.com/hayeswise/Leaflet.PointInPolygon/v1.0.0/wise-leaflet-pip.js"></script>
     <script src="https://rawgit.com/hayeswise/Leaflet.PointInPolygon/master/wise-leaflet-pip.js"></script>
     <!-- Feuille de style CSS-->
-    <link rel="stylesheet" href=css/continent.css>
+    <link rel="stylesheet" href=styles/continent.css>
     <!-- Le script pour l'affichage des questions drapeaux -->
    
   </head>
@@ -56,8 +57,6 @@
             </ul>
          </nav>
       <?php endif; ?>
-      <audio id="audio_erreur" src="sounds/error.mp3" autostart="false" ></audio>
-      <audio id="audio_success" src="sounds/success.mp3" autostart="false" ></audio>
       <div class="d-flex justify-content-center" id="box_carte_jeu">
           <div  id="map" class="invisible"> </div>
           <div class="justify-content-center" id="box_jeu">
@@ -92,20 +91,20 @@
               <div class="row text-center" id="img_pays">
                 <div class="col-sm" id="bloc_img_pays">
                   <!-- height 125 et w 250 -->
-                  <img src="images/continent_afrique/continent.jpg" id="img_drapeau"width="250" height="150" alt="Image du drapeau du pays">
+                  <img src="images/continent_afrique/continent.jpg" id="img_drapeau" width="250" height="150" alt="Image du drapeau du pays">
                   <p class=" invisible les_infos" id="info_pays"><span id="nom_pays_info"> Lepays </span> <br> <br>
                     Population: <span id="nombre_population_info">  </span> <br> 
                     Capitale: <span id="pays_capitale_info">  </span> <br>
                     Superficie: <span id="pays_superficie_info">  </span> <br>
-                    Langue: <span id="pays_langue_info">  </span> <br>
+                    Langue(s): <span id="pays_langue_info">  </span> <br>
                   </p>
                 </div>
               </div>
               <div class="row text-center">
                 <div class="col-sm">
-                  <button type="button" class="btn btn-success btn_passer btn-lg invisible" id="btn_finir"onclick="finir()">Finir</button>
-                  <button type="button" class="btn btn-danger btn_passer" id="btn_passer"onclick="pays_passer(0)">Passer</button>
-                  <button type="button" class="btn btn-success btn_passer invisible" id="btn_suivant"onclick="pays_suivant()">Suivant</button>
+                  <button type="button" class="btn btn-success btn_passer btn-lg invisible" id="btn_finir" onclick="finir()">Finir</button>
+                  <button type="button" class="btn btn-danger btn_passer" id="btn_passer" onclick="pays_passer(0)">Passer</button>
+                  <button type="button" class="btn btn-success btn_passer invisible" id="btn_suivant" onclick="pays_suivant()">Suivant</button>
                 </div>
                 
               </div>
@@ -129,10 +128,7 @@
             </div>
           </div>
       </div>
-      
-      <script src="js/afrique_carte.js" type="text/javascript"> </script>
-      
-    
+      <script src="scripts/afrique_carte.js" type="text/javascript"> </script>
 
   </body>
 </html>

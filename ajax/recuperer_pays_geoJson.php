@@ -43,7 +43,7 @@
     }elseif(isset($_POST['pays_info'])){
         $pays=$_POST['pays_info'];
         $conn=connect_to_db();
-        $sql = "SELECT Population,Capitale,Supérficie,Langue FROM pays WHERE Nom_pays = :le_pays";
+        $sql = "SELECT Capitale,Population,Supérficie,Langue FROM pays WHERE Nom_pays = :le_pays";
         $stmt = $conn->prepare($sql);
         $stmt->bindValue(':le_pays', $pays);
         $stmt->execute();

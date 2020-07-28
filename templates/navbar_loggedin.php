@@ -30,7 +30,6 @@
           </a>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="informations.php">Infos et stats</a>
-            <a class="dropdown-item" href="#">Classement</a>
             <a class="dropdown-item" href="index.php?action=logout">Déconnexion</a>
 
           </div>

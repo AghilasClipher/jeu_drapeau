@@ -10,7 +10,14 @@
         <form  method="post">
           <div class="form-row">
             <div class="col">
-             <input type="text" id="pseudo_co" class="form-control" placeholder="Pseudo" name="pseudo_co">
+             <?php if(isset($_SESSION["pseudo_inscription"]) && !empty($_SESSION["pseudo_inscription"])){
+               echo ' <input type="text" id="pseudo_co" class="form-control" placeholder="Pseudo" name="pseudo_co" value="'.$_SESSION['pseudo_inscription'].'"> ';
+               unset_signup();
+             }else{
+               echo '<input type="text" id="pseudo_co" class="form-control" placeholder="Pseudo" name="pseudo_co">'; 
+             }
+             ?>
+             
              <small id="inscription">
               <a href="inscription.php"> Inscrivez-vous</a>
              </small>
@@ -18,7 +25,7 @@
             <div class="col">
               <input type="password" id="password_co" class="form-control" placeholder="Mot de passe" name="password_co">
               <small id="mdp_oubli"> 
-                <a href="mdp_oubli.html"> Mot de passe oublié ?</a>
+                <a href="index.php"> Mot de passe oublié ?</a>
               </small>
             </div>
             <div class="col">

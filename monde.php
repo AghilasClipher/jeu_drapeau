@@ -1,10 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
-    <title>GeoEducation - Afrique: drapeaux</title>
+    <title>GeoGamingPro - Monde: drapeaux et pays</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Apprendre et découvrir les pays et les drapeaux du monde avec une carte géographique.">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
      <!-- Script utilisé pour le sweet alert -->
@@ -16,7 +17,7 @@
     <script src="https://cdn.rawgit.com/hayeswise/Leaflet.PointInPolygon/v1.0.0/wise-leaflet-pip.js"></script>
     <script src="https://rawgit.com/hayeswise/Leaflet.PointInPolygon/master/wise-leaflet-pip.js"></script>
     <!-- Feuille de style CSS-->
-    <link rel="stylesheet" href=css/continent.css>
+    <link rel="stylesheet" href=styles/continent.css>
     <!-- Le script pour l'affichage des questions drapeaux -->
    
   </head>
@@ -56,8 +57,7 @@
             </ul>
          </nav>
       <?php endif; ?>
-      <audio id="audio_erreur" src="sounds/error.mp3" autostart="false" ></audio>
-      <audio id="audio_success" src="sounds/success.mp3" autostart="false" ></audio>
+
       <div class="d-flex justify-content-center" id="box_carte_jeu">
           <div  id="map" class="invisible"> </div>
           <div class="justify-content-center" id="box_jeu">
@@ -97,7 +97,7 @@
                     Population: <span id="nombre_population_info">  </span> <br> 
                     Capitale: <span id="pays_capitale_info">  </span> <br>
                     Superficie: <span id="pays_superficie_info">  </span> <br>
-                    Langue: <span id="pays_langue_info">  </span> <br>
+                    Langue(s): <span id="pays_langue_info">  </span> <br>
                   </p>
                 </div>
               </div>
@@ -130,7 +130,7 @@
           </div>
       </div>
       
-      <script src="js/afrique_carte.js" type="text/javascript"> </script>
+      <script src="scripts/afrique_carte.js" type="text/javascript"> </script>
       
     
 
