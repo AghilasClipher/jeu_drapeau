@@ -1,15 +1,16 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
-    <title>GeoEducation: apprendre en s'amusant</title>
+    <title> GeoGamingPro : Jeux de géographie - Apprendre en s'amusant </title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <meta name="keywords" content="geo, géographie, pays, drapeaux, jeu, carte, education, apprendre, continents, europe, asie, afrique, monde, océanie, amérique,jeux gratuits, jeux en ligne, jeu sur ordinateur, jeux de géographie,jeu de géographie">
+    <meta name="description" content="GeoGamingPro est un jeu éducatif qui permet d'apprendre la géographie, les pays ainsi que les drapeaux">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Feuille de style CSS-->
-    <link rel="stylesheet" href=css/accueil.css>
+    <link rel="stylesheet" href=styles/accueil.css>
 
     <!-- Script utilisé pour le sweet alert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
@@ -25,10 +26,13 @@
      <!-- Le fichier suivant permet de traiter les données entrées dans les champs de connexion -->
      <?php 
       include_once 'connexionphp.php';
+      //echo $_SESSION['pseudo_inscription'];
+      
+      unset_signup();
       ?>
     <div class="row" id="titre_et_connexion">
       <div class="col-sm-8">
-        <h1 class="display-4" id="titre_accueil"> GeoEducation </h1>
+        <h1 class="display-4" id="titre_accueil"> GeoGamingPro </h1>
       </div>
 
       <!-- Si l'utilisateur est connecté, on affiche un message de bienvenue, sinon, on affiche le formulaire de connexion (pseudo et mdp) -->
@@ -63,9 +67,18 @@
         <li class="nav-item"> 
           <a href="oceanie.php" class="nav-link disabled"> Océanie</a>
         </li>
+        <li class="nav-item"> 
+          <a href="monde.php" class="nav-link disabled"> Monde</a>
+        </li>
       </ul>     
      </nav>
-    <?php endif; ?> 
+    <?php endif; ?>
+    <?php if(is_logged()): ?>
+      <?php include_once 'templates/continents_menu_loggedin.php'; ?>
+    <?php else: ?>
+      <?php include_once 'templates/continents_menu.php'; ?>
+    <?php endif; ?>
+   
     
   </body>
 </html>

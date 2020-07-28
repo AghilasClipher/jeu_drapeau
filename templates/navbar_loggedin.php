@@ -18,6 +18,9 @@
         <li class="nav-item"> 
           <a href="oceanie.php" class="nav-link"> Océanie</a>
         </li>
+        <li class="nav-item"> 
+          <a href="monde.php" class="nav-link"> Monde</a>
+        </li>
       </ul>
       <!-- Le dropdown pour 'Mon compte'-->
       <ul class="navbar-nav ml-auto">
@@ -26,9 +29,7 @@
             Mon compte
           </a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="informations.php">Informations</a>
-            <a class="dropdown-item" href="#">Statistiques</a>
-            <a class="dropdown-item" href="#">Classement</a>
+            <a class="dropdown-item" href="informations.php">Infos et stats</a>
             <a class="dropdown-item" href="index.php?action=logout">Déconnexion</a>
 
           </div>

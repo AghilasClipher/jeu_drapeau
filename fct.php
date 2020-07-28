@@ -23,7 +23,17 @@ function is_logged() : bool {
     }
     
 }
-
+function unset_signup() : void {
+    if(isset($_SESSION['inscription'])){
+        unset($_SESSION['inscription']);
+    }
+    if(isset($_SESSION['email_inscription'])){
+        unset($_SESSION['email_inscription']);
+    }
+    if(isset($_SESSION['pseudo_inscription'])){
+        unset($_SESSION['pseudo_inscription']);
+    }
+}
 function is_admin() : bool {
     if(is_logged()){
         if(isset($_SESSION['admin']) && $_SESSION['admin']==1){

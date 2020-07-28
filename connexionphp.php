@@ -12,7 +12,7 @@
         icon: 'success',
         confirmButtonText: 'OK'
       }); </script>";
-      //header('Location: accueil_jeu.php');
+      //header('Location: index.php');
     }
 
     //Lorsque l'utilisateur clique sur le bouton de connexion
@@ -21,8 +21,9 @@
       if(isset($_POST["pseudo_co"]) && !empty($_POST["pseudo_co"]) && isset($_POST["password_co"]) && !empty($_POST["password_co"])){
             $username=$_POST["pseudo_co"]; 
             $password=$_POST["password_co"]; 
-            $sql="Select Pseudo,Password,User_admin from utilisateurs where '$username'=Pseudo";
+            $sql="Select Pseudo,Password,User_admin from utilisateurs where Pseudo=:pseudo";
             $req = $conn->prepare($sql);
+            $req->bindValue(':pseudo', $username);
             $req->execute();
             // Si la requete ne retourne aucune ligne, alors le pseudo n'existe pas dans la BD !
             if($req->rowCount()==0){

@@ -1,17 +1,17 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <meta name="description" content="Inscription du joueur avec ses informations pour le jeu de géographie">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Feuille de style CSS-->
-    <link rel="stylesheet" href=css/inscription.css>
+    <link rel="stylesheet" href=styles/inscription.css>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-    <title> Inscrivez-vous et jouez !</title>
+    <title> GeoGamingPro - Inscrivez-vous et jouez !</title>
     
   
   </head>
@@ -26,14 +26,14 @@
       include_once 'inscriptionphp.php';
     ?>
     
-    <h1 class="display-4" id="titre_pg_insc"> GeoEducation </h1>
+    <h1 class="display-4" id="titre_pg_insc"> GeoGamingPro </h1>
     <div id="titre_inscription">
       <h3 class="text-center" id="title_insc"> Inscription</h3>
     </div>
     <a href="index.php" class="btn btn-primary btn-lg active btn-sm" role="button" aria-pressed="true" id=btn_revenir_accueil>Revenir à l'accueil et se connecter</a>
     <?php 
-      if(isset($_GET["inscription"]) && !empty($_GET["inscription"])){
-        if($_GET["inscription"]=="success"){
+      if(isset($_SESSION["inscription"]) && !empty($_SESSION["inscription"])){
+        if($_SESSION["inscription"]=="success"){
           echo ' <div class="d-flex justify-content-center">
                      <p class="msg_success"> Votre inscription a été enregistrée: allez à <a href="index.php">l&apos;accueil.</a> </p> 
                      </div>';
@@ -46,20 +46,26 @@
           <label for="inputPseudo3" class="col-sm-2 col-form-label">Pseudo</label>
           <div class="col-sm-10">
           <?php
-              if(isset($_GET["pseudo"])){
-                $pseudo=$_GET["pseudo"];
-                echo '<input type="text" class="form-control" name="pseudo_reg" id="inputPseudo3" placeholder="Votre pseudo" value="'.$pseudo.'">';
+              if(isset($_SESSION["pseudo_inscription"]) && !empty($_SESSION["pseudo_inscription"])){
+                $pseudo=$_SESSION["pseudo_inscription"];
+                if($_SESSION['inscription']!="success"){
+                  echo '<input type="text" class="form-control" name="pseudo_reg" id="inputPseudo3" placeholder="Votre pseudo" value="'.$pseudo.'">';
+                }else{
+                  echo ' <input type="text" class="form-control" name="pseudo_reg" id="inputPseudo3" placeholder="Votre pseudo">';
+                }
               }
               else{
                 echo ' <input type="text" class="form-control" name="pseudo_reg" id="inputPseudo3" placeholder="Votre pseudo">';
-                if(isset($_GET["inscription"]) && !empty($_GET["inscription"])){
-                  if($_GET["inscription"]=="pseudoindispo"){
+              }
+              if(isset($_SESSION["inscription"]) && !empty($_SESSION["inscription"])){
+                if($_SESSION["inscription"]=="pseudoindispo"){
                     echo '<small> <p class="msg_err_small"> Ce pseudo est indisponible: choisissez-en un autre. </p> </small>';
-                  }elseif($_GET["inscription"]=="pseudolg"){
+                  }elseif($_SESSION["inscription"]=="pseudolg"){
                     echo '<small> <p class="msg_err_small"> Votre pseudo ne peut pas contenir plus de 25 caractères. </p> </small>';
                   }
-                }
               }
+              
+              
             ?>
           </div>
         </div>
@@ -67,28 +73,33 @@
           <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
           <div class="col-sm-10">
             <?php
-              if(isset($_GET["email"])){
-                $email=$_GET["email"];
-                echo '<input type="email" name="email" class="form-control" id="inputEmail3" placeholder="Votre email" value="'.$email.'">';
+              if(isset($_SESSION["email_inscription"]) && !empty($_SESSION["email_inscription"])){
+                $email=$_SESSION["email_inscription"];
+                if($_SESSION['inscription']!="success"){
+                  echo '<input type="email" name="email" class="form-control" id="inputEmail3" placeholder="Votre email" value="'.$email.'">';
+                }else{
+                  echo ' <input type="email" name="email" class="form-control" id="inputEmail3" placeholder="Votre email">';
+                }
+                
               }
               else{
                 echo ' <input type="email" name="email" class="form-control" id="inputEmail3" placeholder="Votre email">';
-                if(isset($_GET["inscription"]) && !empty($_GET["inscription"])){
-                  if($_GET["inscription"]=="emailindispo"){
-                    echo '<small> <p class="msg_err_small"> Choisissez un autre email. </p> </small>';
-                  }
+              }
+              if(isset($_SESSION['inscription']) && !empty($_SESSION['inscription'])){
+                if($_SESSION["inscription"]=="emailindispo"){
+                  echo '<small> <p class="msg_err_small"> Choisissez un autre email. </p> </small>';
                 }
               }
             ?>
           </div>
         </div>
         <div class="form-group row">
-          <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+          <label for="inputPassword3" class="col-sm-2 col-form-label">Mot de passe</label>
           <div class="col-sm-10">
             <input type="password" name="password_reg" class="form-control" id="inputPassword3" >
             <?php
-              if(isset($_GET["inscription"]) && !empty($_GET["inscription"])){
-                if($_GET["inscription"]=="mdp_pb"){
+              if(isset($_SESSION["inscription"]) && !empty($_SESSION["inscription"])){
+                if($_SESSION["inscription"]=="mdp_pb"){
                 echo '<small> <p class="msg_err_small"> Votre mot de passe doit contenir entre 8 et 30 caractères. </p> </small>';
                 }
               }
@@ -359,11 +370,11 @@
       </form>
      </div>
       <?php 
-        if(!isset($_GET["inscription"])){
+        if(!isset($_SESSION["inscription"])){
           exit();
         }
         else{
-          $checkSignup=$_GET["inscription"];
+          $checkSignup=$_SESSION["inscription"];
           if( $checkSignup=="empty"){
             echo "<script> Swal.fire({
               title: 'Champs incomplets',
@@ -416,8 +427,16 @@
               icon: 'success',
               confirmButtonText: 'OK'
             }); </script>";
-            exit(); 
+            echo $_SESSION['inscription'];
+            echo "ici";
+            $_SESSION['pseudo_co']=$_SESSION['pseudo_inscription'];
+            //$_SESSION['pseudo_inscription']="";
+            //$_SESSION['email_inscription']="";
+            
+            //exit();
+            
           }
+          
         }
       ?>    
   </body>

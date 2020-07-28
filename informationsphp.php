@@ -24,5 +24,21 @@
     $_SESSION["email"]=$row["Email"];
     $_SESSION["pays"]=$row["Pays"];
     $_SESSION["date_inscription"]=$row["Date_inscription"];
-    $_SESSION["nb_parties"]=$row["Nb_parties"];
+
+    // on récupère le nombre de parties jouées. 
+    $sql = "SELECT COUNT(Pseudo) AS nb_parties  FROM historique WHERE Pseudo = :username";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindValue(':username', $pseudo);
+    $stmt->execute();
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    $_SESSION["nb_parties"]=$row["nb_parties"];
+
+    //on recupère le score moyen
+    $sql = "SELECT AVG(Score) AS score_moyen  FROM historique WHERE Pseudo = :username";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindValue(':username', $pseudo);
+    $stmt->execute();
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    $_SESSION["score_moyen"]=round($row["score_moyen"]);
+
 ?>
